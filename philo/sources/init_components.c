@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 01:53:53 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/14 21:44:39 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/15 09:08:26 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ static void	init_thread(t_table *table)
 	while (++i < table->n_phis)
 	{
 		philo = table->phis + i;
-		philo->die = 0;
-		philo->eat = 0;
-		philo->sleep = 0;
+		philo->last_eat = 0;
 		philo->n_eats = 0;
+		philo->start = 0;
 		philo->p_num = i;
 		philo->table = table;
 	}

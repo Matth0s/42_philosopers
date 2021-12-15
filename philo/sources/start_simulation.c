@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 02:45:18 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/15 09:03:21 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/15 09:44:15 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ void	print_actions(t_philo *philo, char *action)
 	philosoper = philo->p_num + 1;
 	pthread_mutex_lock(&philo->table->print);
 	if (*action == 'f' && *(action + 1) == 'l')
-		printf("%ld: %d has taken a fork\n", time, philosoper);
+		printf(PURPLE"%ld    %d has taken a fork\n"RESET, time, philosoper);
 	else if (*action == 'f' && *(action + 1) == 'r')
-		printf("%ld: %d has taken a fork\n", time, philosoper);
+		printf(MAGENTA"%ld    %d has taken a fork\n"RESET, time, philosoper);
 	else if (*action == 'e')
-		printf("%ld: %d is eating\n", time, philosoper);
+		printf(GREEN"%ld    %d is eating\n"RESET, time, philosoper);
 	else if (*action == 's')
-		printf("%ld: %d is sleeping\n", time, philosoper);
+		printf(CYAN"%ld    %d is sleeping\n"RESET, time, philosoper);
 	else
-		printf("%ld: %d is thinking\n", time, philosoper);
+		printf(YELLOW"%ld    %d is thinking\n"RESET, time, philosoper);
 	pthread_mutex_unlock(&philo->table->print);
 }
 

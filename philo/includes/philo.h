@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 11:39:55 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/15 09:01:31 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/15 09:43:25 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,20 @@
 # include <sys/time.h>
 # include <pthread.h>
 
+#define PURPLE		"\033[34m"
+#define MAGENTA		"\033[35m"
+#define GREEN		"\033[32m"
+#define CYAN		"\033[36m"
+#define YELLOW		"\033[33m"
+#define RED			"\033[31m"
+#define RESET		"\033[0m"
+
 typedef struct s_table	t_table;
 
 typedef struct s_philo
 {
 	pthread_t		pth;
-	long int		die;
-	long int		eat;
-	long int		sleep;
+	long int		last_eat;
 	long int		start;
 	int				n_eats;
 	int				p_num;
