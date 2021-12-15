@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 11:40:57 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/11 02:52:59 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/11 13:57:31 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(int argc, char *argv[])
 		return (1);
 	if (init_components(argc - 1, argv + 1, &table))
 		return (2);
+	start_simulation(&table);
 	destroy_components(&table, 1);
 	return (0);
 }

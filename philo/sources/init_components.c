@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 01:53:53 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/11 02:51:38 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/14 21:44:39 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	init_thread(t_table *table)
 		philo->die = 0;
 		philo->eat = 0;
 		philo->sleep = 0;
+		philo->n_eats = 0;
 		philo->p_num = i;
 		philo->table = table;
 	}
@@ -52,6 +53,7 @@ static void	init_parameters(int argc, char **argv, t_table *table)
 	table->time_d = str_to_long(*(argv + 1));
 	table->time_e = str_to_long(*(argv + 2));
 	table->time_s = str_to_long(*(argv + 3));
+	table->begin = 0;
 	if (argc == 5)
 		table->n_lunch = str_to_long(*(argv + 4));
 	else
