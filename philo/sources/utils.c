@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 18:08:49 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/11 18:01:00 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/15 11:13:36 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ long int	str_to_long(char *nptr)
 long int	m_time(void)
 {
 	struct timeval	time;
+
 	gettimeofday(&time, NULL);
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }

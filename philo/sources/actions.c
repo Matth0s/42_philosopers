@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 08:56:41 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/15 08:56:56 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/15 14:16:52 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	philo_take_forks(t_philo *philo)
 {
 	pthread_mutex_lock(philo->table->forks + philo->p_num);
 	print_actions(philo, "fl");
- 	if (philo->p_num + 1 == philo->table->n_phis)
+	if (philo->p_num + 1 == philo->table->n_phis)
 	{
 		pthread_mutex_lock(philo->table->forks);
 		print_actions(philo, "fr");
@@ -30,15 +30,17 @@ void	philo_take_forks(t_philo *philo)
 
 void	philo_eat(t_philo *philo)
 {
+	pthread_mutex_lock(&philo->mutex);
 	print_actions(philo, "e");
 	m_sleep(philo->table->time_e);
 	philo->n_eats++;
+	pthread_mutex_unlock(&philo->mutex);
 }
 
 void	philo_drop_forks(t_philo *philo)
 {
 	pthread_mutex_unlock(philo->table->forks + philo->p_num);
- 	if (philo->p_num + 1 == philo->table->n_phis)
+	if (philo->p_num + 1 == philo->table->n_phis)
 		pthread_mutex_unlock(philo->table->forks);
 	else
 		pthread_mutex_unlock(philo->table->forks + philo->p_num + 1);
