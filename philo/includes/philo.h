@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 11:39:55 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/14 21:44:04 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/15 09:01:31 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,22 @@ struct s_table
 	pthread_mutex_t	print;
 };
 
-int			init_components(int argc, char **argv, t_table *table);
-int			start_simulation(t_table *table);
-void		destroy_components(t_table *table, int mutex_init);
+//------------------------------------Mains-------------------------------------
+int					init_components(int argc, char **argv, t_table *table);
+int					start_simulation(t_table *table);
+void				destroy_components(t_table *table, int mutex_init);
 
+//------------------------------------Utils-------------------------------------
+long int			str_to_long(char *nptr);
+long int			m_time(void);
+void				m_sleep(long int time);
 
-
-long int	str_to_long(char *nptr);
-void		m_sleep(long int time);
-long int	m_time(void);
+//-----------------------------------Actions------------------------------------
+void				philo_take_forks(t_philo *philo);
+void				philo_eat(t_philo *philo);
+void				philo_drop_forks(t_philo *philo);
+void				philo_sleep(t_philo *philo);
+void				philo_think(t_philo *philo);
+void				print_actions(t_philo *philo, char *action);
 
 #endif
