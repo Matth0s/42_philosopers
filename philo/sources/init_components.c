@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 01:53:53 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/16 12:36:32 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/16 14:21:45 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static void	init_thread(t_table *table)
 		philo = table->phis + i;
 		philo->last_eat = 0;
 		philo->n_eats = 0;
-		philo->start = 0;
 		philo->p_num = i;
 		philo->table = table;
+		pthread_mutex_init(&philo->mutex, NULL);
 	}
 }
 
@@ -57,7 +57,7 @@ static void	init_parameters(int argc, char **argv, t_table *table)
 	else
 		table->n_lunch = 0;
 	table->some_die = 0;
-	table->begin = 0;
+	table->start = 0;
 	pthread_mutex_init(&table->print, NULL);
 }
 

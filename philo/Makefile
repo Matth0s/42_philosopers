@@ -6,7 +6,7 @@
 #    By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/08 10:23:00 by mmoreira          #+#    #+#              #
-#    Updated: 2021/12/16 10:29:07 by mmoreira         ###   ########.fr        #
+#    Updated: 2021/12/16 12:43:48 by mmoreira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ vpath %.h $(INCD_DIR)
 
 NAME	=	philo
 
-CFLAGS	=	-Wall -Wextra -Werror -g3 #-fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address
 
 FLAGS	=	-pthread
 
