@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   actions.c                                          :+:      :+:    :+:   */
+/*   actions_loop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 08:56:41 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/16 14:17:05 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/16 17:10:29 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"philo.h"
+#include "philo.h"
 
 void	philo_take_forks(t_philo *philo)
 {
@@ -30,9 +30,7 @@ void	philo_take_forks(t_philo *philo)
 
 void	philo_eat(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->mutex);
 	print_actions(philo, "e");
-	pthread_mutex_unlock(&philo->mutex);
 	philo->last_eat = m_time();
 	m_sleep(philo->table->time_e);
 	philo->n_eats++;

@@ -6,7 +6,7 @@
 #    By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/08 10:23:00 by mmoreira          #+#    #+#              #
-#    Updated: 2021/12/16 12:43:48 by mmoreira         ###   ########.fr        #
+#    Updated: 2021/12/16 15:47:25 by mmoreira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ SRC_DIR	=	./sources
 SRC		=	philo.c \
 			init_components.c \
 			start_simulation.c \
-			actions.c \
+			actions_loop.c \
+			actions_die_print.c \
 			destroy_components.c \
 			utils.c
 

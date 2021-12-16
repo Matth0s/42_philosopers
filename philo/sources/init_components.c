@@ -6,11 +6,11 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 01:53:53 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/16 14:21:45 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/16 17:10:36 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"philo.h"
+#include "philo.h"
 
 static void	init_thread(t_table *table)
 {
@@ -25,7 +25,6 @@ static void	init_thread(t_table *table)
 		philo->n_eats = 0;
 		philo->p_num = i;
 		philo->table = table;
-		pthread_mutex_init(&philo->mutex, NULL);
 	}
 }
 

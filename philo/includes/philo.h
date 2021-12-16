@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 11:39:55 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/16 14:21:11 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/16 16:53:56 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct s_philo
 	long int		last_eat;
 	int				n_eats;
 	int				p_num;
-	pthread_mutex_t	mutex;
 	t_table			*table;
 }					t_philo;
 
@@ -69,6 +68,8 @@ void				philo_eat(t_philo *philo);
 void				philo_drop_forks(t_philo *philo);
 void				philo_sleep(t_philo *philo);
 void				philo_think(t_philo *philo);
+
+void				*philo_die(void *arg);
 void				print_actions(t_philo *philo, char *action);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 18:08:49 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/15 11:13:36 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/16 17:10:43 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"philo.h"
+#include "philo.h"
 
 long int	str_to_long(char *nptr)
 {
