@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 11:39:55 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/16 16:53:56 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/16 17:41:26 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ struct s_table
 	t_philo			*phis;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print;
-};
+}						;
 
 //------------------------------------Mains-------------------------------------
 int					init_components(int argc, char **argv, t_table *table);
