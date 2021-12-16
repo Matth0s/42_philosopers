@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 11:39:55 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/15 14:15:28 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/16 10:32:31 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_philo
 	long int		start;
 	int				n_eats;
 	int				p_num;
-	pthread_mutex_t	mutex;
 	t_table			*table;
 }					t_philo;
 

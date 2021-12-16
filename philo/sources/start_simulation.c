@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 02:45:18 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/15 13:58:06 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/16 12:33:24 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,30 @@ void	philo_die(t_philo *philo)
 		print_actions(philo, "die");
 }
 
+void	*check_die(void *arg)
+{
+	t_philo *philo;
+
+	philo = (t_philo*)arg;
+	while (!(philo->table->some_die))
+		if (philo->last_eat)
+			philo_die(philo);
+	return (NULL);
+}
 
 void	*simulation(void *arg)
 {
 	t_philo		*philo;
+	pthread_t	die;
 
 	philo = (t_philo *)arg;
 	while (!(philo->table->begin))
 		usleep(1);
 	if (philo->p_num % 2 == 1)
-		usleep(1000);
+		m_sleep(1);
+	pthread_create(&die, NULL, &check_die, philo);
+	pthread_detach(die);
 	philo->start = m_time();
-/* 	int i = 0; */
 	while (!(philo->table->some_die))
 	{
 		philo_take_forks(philo);
@@ -66,8 +78,6 @@ void	*simulation(void *arg)
 		philo_drop_forks(philo);
 		philo_sleep(philo);
 		philo_think(philo);
-/* 		if(++i > 14)
-			philo_die(philo); */
 		if (philo->table->n_lunch)
 			if (philo->n_eats == philo->table->n_lunch)
 				break ;

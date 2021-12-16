@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 01:53:53 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/15 13:56:19 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/16 12:36:32 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,13 @@ static void	init_parameters(int argc, char **argv, t_table *table)
 	table->time_d = str_to_long(*(argv + 1));
 	table->time_e = str_to_long(*(argv + 2));
 	table->time_s = str_to_long(*(argv + 3));
-	table->some_die = 0;
-	table->begin = 0;
 	if (argc == 5)
 		table->n_lunch = str_to_long(*(argv + 4));
 	else
 		table->n_lunch = 0;
+	table->some_die = 0;
+	table->begin = 0;
+	pthread_mutex_init(&table->print, NULL);
 }
 
 int	init_components(int argc, char **argv, t_table *table)
