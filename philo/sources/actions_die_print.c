@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 15:48:18 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/21 13:39:20 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/21 13:59:16 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,19 @@ void	print_actions(t_philo *philo, char *action)
 void	*philo_die(void *arg)
 {
 	t_philo	*philo;
+	int		i;
 
 	philo = (t_philo *)arg;
 	while (!(philo->table->some_die))
 	{
-		usleep(50);
+		usleep(1);
 		if (philo->table->n_lunch && philo->n_eats == philo->table->n_lunch)
 			break ;
 		if (philo->table->time_d < m_time() - philo->last_eat)
 			print_actions(philo, "die");
 	}
+	i = -1;
+	while(++i < philo->table->n_phis)
+		pthread_mutex_unlock(philo->table->forks + i);
 	return (NULL);
 }
