@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 11:40:57 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/15 11:15:06 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/21 11:37:10 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_parameters(int argc, char **argv)
 		while (*(*(argv + i) + ++j))
 			if (*(*(argv + i) + j) < '0' || *(*(argv + i) + j) > '9')
 				return (2);
-		if (str_to_long(*(argv + i)) == 0)
+		if (!(str_to_long(*(argv + i))))
 			return (3);
 	}
 	return (0);
@@ -37,11 +37,17 @@ int	main(int argc, char *argv[])
 	t_table	table;
 
 	if (check_parameters(argc - 1, argv + 1))
+	{
+		printf("Argument Error\n");
 		return (1);
+	}
 	if (init_components(argc - 1, argv + 1, &table))
+	{
+		printf("Malloc Error\n");
 		return (2);
+	}
 	if (start_simulation(&table))
-		printf("Thread Error");
+		printf("Thread Error\n");
 	destroy_components(&table, 1);
 	return (0);
 }

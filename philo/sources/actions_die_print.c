@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 15:48:18 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/16 17:12:34 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/21 13:39:20 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	*philo_die(void *arg)
 	philo = (t_philo *)arg;
 	while (!(philo->table->some_die))
 	{
+		usleep(50);
 		if (philo->table->n_lunch && philo->n_eats == philo->table->n_lunch)
 			break ;
 		if (philo->table->time_d < m_time() - philo->last_eat)
