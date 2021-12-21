@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 15:48:18 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/21 15:17:13 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/21 18:27:19 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@ void	*philo_die(void *arg)
 	philo = (t_philo *)arg;
 	while (!(philo->table->some_die))
 	{
-		usleep(1);
 		if (philo->table->n_lunch && philo->n_eats == philo->table->n_lunch)
 			break ;
 		if (philo->table->time_d < m_time() - philo->last_eat)
-			print_actions(philo, "die");
+			print_actions(philo, 'd');
 	}
 	i = -1;
 	while (++i < philo->table->n_phis)
@@ -32,29 +31,29 @@ void	*philo_die(void *arg)
 	return (NULL);
 }
 
-static void	print_aux(t_philo *philo, long int time, int p_num, char *action)
+static void	print_aux(t_philo *philo, long int time, int p_num, char action)
 {
-	if (*action == 'f' && *(action + 1) == 'l')
-		printf(PURPLE"%ld    %d has taken a fork\n"RESET, time, p_num);
-	else if (*action == 'f' && *(action + 1) == 'r')
-		printf(MAGENTA"%ld    %d has taken a fork\n"RESET, time, p_num);
-	else if (*action == 'e')
-		printf(GREEN"%ld    %d is eating\n"RESET, time, p_num);
-	else if (*action == 's')
-		printf(CYAN"%ld    %d is sleeping\n"RESET, time, p_num);
-	else if (*action == 't')
-		printf(YELLOW"%ld    %d is thinking\n"RESET, time, p_num);
+	printf("\033[3%im", p_num % 5 + 2);
+	if (action == 'f')
+		printf("%ld    %d has taken a fork\n", time, p_num);
+	else if (action == 'e')
+		printf("%ld    %d is eating\n", time, p_num);
+	else if (action == 's')
+		printf("%ld    %d is sleeping\n", time, p_num);
+	else if (action == 't')
+		printf("%ld    %d is thinking\n", time, p_num);
 	else
 	{
 		if (!(philo->table->n_lunch) || philo->table->n_lunch != philo->n_eats)
 		{
-			printf(RED"%ld    %d died\n"RESET, time, p_num);
+			printf("\033[31m%ld    %d died\n", time, p_num);
 			philo->table->some_die = 1;
 		}
 	}
+	printf("\033[0m");
 }
 
-void	print_actions(t_philo *philo, char *action)
+void	print_actions(t_philo *philo, char action)
 {
 	long int	time;
 

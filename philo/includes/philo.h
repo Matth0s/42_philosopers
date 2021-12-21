@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 11:39:55 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/16 17:41:26 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/21 18:08:47 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,6 @@
 # include <stdio.h>
 # include <sys/time.h>
 # include <pthread.h>
-
-# define PURPLE		"\033[34m"
-# define MAGENTA	"\033[35m"
-# define GREEN		"\033[32m"
-# define CYAN		"\033[36m"
-# define YELLOW		"\033[33m"
-# define RED		"\033[31m"
-# define RESET		"\033[0m"
 
 typedef struct s_table	t_table;
 
@@ -70,6 +62,6 @@ void				philo_sleep(t_philo *philo);
 void				philo_think(t_philo *philo);
 
 void				*philo_die(void *arg);
-void				print_actions(t_philo *philo, char *action);
+void				print_actions(t_philo *philo, char action);
 
 #endif
