@@ -6,11 +6,31 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 15:48:18 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/21 13:59:16 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/21 15:17:13 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	*philo_die(void *arg)
+{
+	t_philo	*philo;
+	int		i;
+
+	philo = (t_philo *)arg;
+	while (!(philo->table->some_die))
+	{
+		usleep(1);
+		if (philo->table->n_lunch && philo->n_eats == philo->table->n_lunch)
+			break ;
+		if (philo->table->time_d < m_time() - philo->last_eat)
+			print_actions(philo, "die");
+	}
+	i = -1;
+	while (++i < philo->table->n_phis)
+		pthread_mutex_unlock(philo->table->forks + i);
+	return (NULL);
+}
 
 static void	print_aux(t_philo *philo, long int time, int p_num, char *action)
 {
@@ -45,24 +65,4 @@ void	print_actions(t_philo *philo, char *action)
 		print_aux(philo, time, philo->p_num + 1, action);
 	}
 	pthread_mutex_unlock(&philo->table->print);
-}
-
-void	*philo_die(void *arg)
-{
-	t_philo	*philo;
-	int		i;
-
-	philo = (t_philo *)arg;
-	while (!(philo->table->some_die))
-	{
-		usleep(1);
-		if (philo->table->n_lunch && philo->n_eats == philo->table->n_lunch)
-			break ;
-		if (philo->table->time_d < m_time() - philo->last_eat)
-			print_actions(philo, "die");
-	}
-	i = -1;
-	while(++i < philo->table->n_phis)
-		pthread_mutex_unlock(philo->table->forks + i);
-	return (NULL);
 }
