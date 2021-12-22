@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 11:39:55 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/21 18:08:47 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/21 22:57:32 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,21 @@ typedef struct s_philo
 	long int		last_eat;
 	int				n_eats;
 	int				p_num;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
 	t_table			*table;
 }					t_philo;
 
 struct s_table
 {
-	int				n_phis;
+	int				n_phils;
 	long int		time_d;
 	long int		time_e;
 	long int		time_s;
 	int				n_lunch;
 	int				some_die;
 	long int		start;
-	t_philo			*phis;
+	t_philo			*phils;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print;
 }						;

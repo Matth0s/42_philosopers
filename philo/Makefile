@@ -6,7 +6,7 @@
 #    By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/08 10:23:00 by mmoreira          #+#    #+#              #
-#    Updated: 2021/12/16 17:20:12 by mmoreira         ###   ########.fr        #
+#    Updated: 2021/12/21 23:01:15 by mmoreira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRC		=	philo.c \
 			init_components.c \
 			start_simulation.c \
 			actions_loop.c \
-			actions_die_print.c \
+			actions_die.c \
+			actions_print.c \
 			destroy_components.c \
 			utils.c
 

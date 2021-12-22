@@ -6,7 +6,7 @@
 /*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 02:45:18 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/21 15:02:56 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/21 23:21:17 by mmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,45 +15,45 @@
 static void	*simulation(void *arg)
 {
 	t_philo		*philo;
-	pthread_t	check_die;
 
 	philo = (t_philo *)arg;
-	if (philo->p_num % 2 == 1)
-		m_sleep(1);
 	philo->last_eat = philo->table->start;
-	pthread_create(&check_die, NULL, &philo_die, philo);
-	pthread_detach(check_die);
-	while (!(philo->table->some_die))
+	if (!(philo->p_num % 2))
+		m_sleep(1);
+	while (42)
 	{
-		if (!(philo->table->some_die))
-			philo_take_forks(philo);
-		if (!(philo->table->some_die))
-			philo_eat(philo);
-		philo_drop_forks(philo);
-		if (philo->table->n_lunch && philo->n_eats == philo->table->n_lunch)
+		if (philo->table->some_die)
 			break ;
-		if (!(philo->table->some_die))
-			philo_sleep(philo);
-		if (!(philo->table->some_die))
-			philo_think(philo);
+		philo_take_forks(philo);
+		philo_eat(philo);
+		philo_drop_forks(philo);
+		if (philo->n_eats < 0)
+			break ;
+		philo_sleep(philo);
+		philo_think(philo);
 	}
 	return (NULL);
 }
 
 int	start_simulation(t_table *table)
 {
-	int	i;
+	pthread_t	check_die;
+	int			i;
 
 	i = -1;
 	table->start = m_time();
-	while (++i < table->n_phis)
-		if (pthread_create(&(table->phis + i)->pth, NULL, &simulation,
-				table->phis + i))
+	while (++i < table->n_phils)
+		if (pthread_create(&(table->phils + i)->pth, NULL, &simulation,
+				table->phils + i))
 			return (1);
+	if (pthread_create(&check_die, NULL, &philo_die, table))
+		return (1);
 	i = -1;
-	while (++i < table->n_phis)
-		if (pthread_join((table->phis + i)->pth, NULL))
+	while (++i < table->n_phils)
+		if (pthread_join((table->phils + i)->pth, NULL))
 			return (2);
+	if (pthread_join(check_die, NULL))
+		return (2);
 	if (!(table->some_die))
 		printf("\nfull stomach philosophers\n");
 	return (0);
