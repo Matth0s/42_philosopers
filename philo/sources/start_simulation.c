@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_simulation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmoreira <mmoreira@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 02:45:18 by mmoreira          #+#    #+#             */
-/*   Updated: 2021/12/21 23:21:17 by mmoreira         ###   ########.fr       */
+/*   Updated: 2021/12/22 16:47:28 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static void	*simulation(void *arg)
 	t_philo		*philo;
 
 	philo = (t_philo *)arg;
-	philo->last_eat = philo->table->start;
 	if (!(philo->p_num % 2))
 		m_sleep(1);
 	while (42)
